@@ -37,4 +37,8 @@ class GradeEvaluatorGui:
                     top_student_name = student_name
             student_file.close()
             display_text = "Top Student: " + top_student_name + "\nGWA: " + str(highest_grade_value)
-            self.result_label.config(text=display_text)        
+            self.result_label.config(text=display_text)
+
+    def run_application(self):
+        self.build_user_interface()
+        self.main_window.mainloop()        
