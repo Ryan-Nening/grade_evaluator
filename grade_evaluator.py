@@ -12,4 +12,12 @@ class GradeEvaluatorGui:
         self.instruction_label = tkinter.Label(self.main_window, text="Upload students file to find the top rank:")
         self.instruction_label.pack()
         self.evaluate_button = tkinter.Button(self.main_window, text="Load Data", command=self.find_highest_grade)
-        self.evaluate_button.pack()        
+        self.evaluate_button.pack()
+
+    def build_user_interface(self):
+        self.instruction_label = tkinter.Label(self.main_window, text="Upload students file to find the top rank:")
+        self.instruction_label.pack()
+        self.evaluate_button = tkinter.Button(self.main_window, text="Load Data", command=self.find_highest_grade)
+        self.evaluate_button.pack()
+        self.result_label = tkinter.Label(self.main_window, text="\nTop student will appear here", font=("Arial", 12, "bold"))
+        self.result_label.pack()        
