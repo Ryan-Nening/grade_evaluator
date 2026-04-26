@@ -20,7 +20,16 @@ class GradeEvaluatorGui:
         self.instruction_label.pack(pady=5)
 
         self.evaluate_button = tkinter.Button(self.main_window, text="📂 Load Student Data", font=normal_font, bg="#3498db", fg="#ffffff", activebackground="#2980b9", activeforeground="#ffffff", relief="flat", cursor="hand2", command=self.find_highest_grade)
-        self.evaluate_button.pack(pady=15, ipadx=10, ipady=5)   
+        self.evaluate_button.pack(pady=15, ipadx=10, ipady=5)
+
+        self.result_frame = tkinter.Frame(self.main_window, bg="#34495e", bd=2, relief="groove")
+        self.result_frame.pack(pady=10, padx=20, fill="x", ipady=15)
+
+        self.student_name_label = tkinter.Label(self.result_frame, text="Top Student: --", font=result_font, bg="#34495e", fg="#2ecc71") 
+        self.student_name_label.pack(pady=5)
+
+        self.gwa_label = tkinter.Label(self.result_frame, text="GWA: --", font=result_font, bg="#34495e", fg="#f1c40f") 
+        self.gwa_label.pack(pady=5)   
 
     def find_highest_grade(self):
         target_file_name = filedialog.askopenfilename(title="Select Students File")
