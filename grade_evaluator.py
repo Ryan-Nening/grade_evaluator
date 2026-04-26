@@ -32,21 +32,33 @@ class GradeEvaluatorGui:
         self.gwa_label.pack(pady=5)   
 
     def find_highest_grade(self):
-        target_file_name = filedialog.askopenfilename(title="Select Students File")
+        target_file_name = filedialog.askopenfilename(title="Select Students File", filetypes=(("Text Files", "*.txt"), ("All Files", "*.*")))
+        
         if target_file_name != "":
-            student_file = open(target_file_name, "r")
-            top_student_name = "None"
-            highest_grade_value = 5.0
-            for current_line in student_file:
-                line_parts = current_line.strip().split(",")
-                student_name = line_parts[0].strip()
-                student_grade = float(line_parts[1].strip())
-                if student_grade < highest_grade_value:
-                    highest_grade_value = student_grade
-                    top_student_name = student_name
-            student_file.close()
-            display_text = "Top Student: " + top_student_name + "\nGWA: " + str(highest_grade_value)
-            self.result_label.config(text=display_text)
+            try:
+                student_file = open(target_file_name, "r")
+                top_student_name = "None"
+                highest_grade_value = 5.0 
+                
+                for current_line in student_file:
+                    if current_line.strip() == "":
+                        continue 
+                        
+                    line_parts = current_line.strip().split(",")
+                    student_name = line_parts[0].strip()
+                    student_grade = float(line_parts[1].strip())
+                    
+                    if student_grade < highest_grade_value:
+                        highest_grade_value = student_grade
+                        top_student_name = student_name
+                
+                student_file.close()
+                
+                self.student_name_label.config(text="Top Student: " + top_student_name)
+                self.gwa_label.config(text="GWA: " + str(highest_grade_value))
+                
+            except Exception:
+                messagebox.showerror("File Error", "Could not process file. Ensure data is formatted as: Name, Grade")
 
     def run_application(self):
         self.build_user_interface()
