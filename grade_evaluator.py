@@ -9,18 +9,18 @@ class GradeEvaluatorGui:
         self.main_window.configure(bg="#2c3e50")
 
     def build_user_interface(self):
-        self.instruction_label = tkinter.Label(self.main_window, text="Upload students file to find the top rank:")
-        self.instruction_label.pack()
-        self.evaluate_button = tkinter.Button(self.main_window, text="Load Data", command=self.find_highest_grade)
-        self.evaluate_button.pack()
+        title_font = font.Font(family="Helvetica", size=16, weight="bold")
+        normal_font = font.Font(family="Helvetica", size=11)
+        result_font = font.Font(family="Helvetica", size=14, weight="bold")
 
-    def build_user_interface(self):
-        self.instruction_label = tkinter.Label(self.main_window, text="Upload students file to find the top rank:")
-        self.instruction_label.pack()
-        self.evaluate_button = tkinter.Button(self.main_window, text="Load Data", command=self.find_highest_grade)
-        self.evaluate_button.pack()
-        self.result_label = tkinter.Label(self.main_window, text="\nTop student will appear here", font=("Arial", 12, "bold"))
-        self.result_label.pack()
+        self.title_label = tkinter.Label(self.main_window, text="🏆 GWA Evaluator Pro", font=title_font, bg="#2c3e50", fg="#f1c40f")
+        self.title_label.pack(pady=(20, 10))
+
+        self.instruction_label = tkinter.Label(self.main_window, text="Upload student records to find the top rank.", font=normal_font, bg="#2c3e50", fg="#ecf0f1")
+        self.instruction_label.pack(pady=5)
+
+        self.evaluate_button = tkinter.Button(self.main_window, text="📂 Load Student Data", font=normal_font, bg="#3498db", fg="#ffffff", activebackground="#2980b9", activeforeground="#ffffff", relief="flat", cursor="hand2", command=self.find_highest_grade)
+        self.evaluate_button.pack(pady=15, ipadx=10, ipady=5)   
 
     def find_highest_grade(self):
         target_file_name = filedialog.askopenfilename(title="Select Students File")
