@@ -1,12 +1,12 @@
 import tkinter
-from tkinter import filedialog
+from tkinter import filedialog, font, messagebox
 
 class GradeEvaluatorGui:
-
     def __init__(self):
         self.main_window = tkinter.Tk()
-        self.main_window.title("GWA Evaluator Dashboard")
-        self.main_window.geometry("350x200")
+        self.main_window.title("GWA Evaluator Pro")
+        self.main_window.geometry("400x350")
+        self.main_window.configure(bg="#2c3e50")
 
     def build_user_interface(self):
         self.instruction_label = tkinter.Label(self.main_window, text="Upload students file to find the top rank:")
